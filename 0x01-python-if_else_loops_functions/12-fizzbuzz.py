@@ -9,5 +9,7 @@ def fizzbuzz():
         elif i % 5 == 0:
             output += "Buzz "
         else:
-            output += str(i) + " "
-    print(output.strip())
+            output += str(i)
+        if i != 100:
+            output += " "
+    print(output)
