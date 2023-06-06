@@ -1,3 +1,3 @@
 #!/usr/bin/python3
-message = 'The Zen of Python, by TimPeters\n'
-print(message)
+message = 'The Zen of Python, by TimPeters'
+print(message);print()
