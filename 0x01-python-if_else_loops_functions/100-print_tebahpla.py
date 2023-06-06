@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-output = ''
-for char in range(122, 96, -1):
-    output += "{:c}".format(char if (char % 2 == 0) else char - 32)
-print(output)
+for i in range(25, -1, -1):
+    offset = ord('A') - ord('a') if i % 2 == 0 else 0
+    print(chr(i + ord('a') + offset), end="")
