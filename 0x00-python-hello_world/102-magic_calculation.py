@@ -1,4 +1,3 @@
-#!/usr/bin/python3
 def magic_calculation(a, b):
     if a % 2 == 0:
         return (a + b) * 2
