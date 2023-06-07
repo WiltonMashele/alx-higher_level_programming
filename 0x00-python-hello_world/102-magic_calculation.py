@@ -1,4 +1,6 @@
 #!/usr/bin/python3
 def magic_calculation(a, b):
-    result = (a + b) * (a - b)
-    return result
+    if a > b:
+        return a + b
+    else:
+        return a * b + 98
