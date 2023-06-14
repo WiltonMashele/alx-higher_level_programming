@@ -1,4 +1,6 @@
 #!/usr/bin/python3
 
 def simple_delete(a_dictionary, key=""):
-    return {k: v for k, v in my_dict.items() if k != key}
+    new_dict = my_dict.copy()
+    new_dict.pop(key, None)
+    return new_dict
