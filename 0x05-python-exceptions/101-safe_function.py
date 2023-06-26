@@ -9,7 +9,6 @@ def safe_function(fct, *args):
     try:
         result = fct(*args)
         return result
-    except:
-        exc_type, exc_value, exc_traceback = sys.exc_info()
-        print("Exception: {}".format(exc_value), file=sys.stderr)
+    except Exception as e:
+        print("Exception: {}".format(e), file=sys.stderr)
         return None
