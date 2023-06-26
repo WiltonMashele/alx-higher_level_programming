@@ -2,15 +2,12 @@
 
 def safe_print_list(my_list=[], x=0):
     cmpt = 0
-    iterator = iter(my_list)
     
-    while cmpt < x:
+    for i in range(x):
         try:
-            print(next(iterator), end='')
+            print(my_list[i], end='')
             cmpt += 1
-        except StopIteration:
-            break
-        except:
+        except (IndexError, TypeError):
             break
     
     print('')
