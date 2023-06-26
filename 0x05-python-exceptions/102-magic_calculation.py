@@ -2,14 +2,10 @@
 
 def magic_calculation(a, b):
     result = 0
-    
-    if a == 0:
-        result = b
-    elif b == 0:
-        result = a
-    elif a > b:
-        result = a - b
+
+    if a < 1:
+        result = b + a
     else:
-        result = a + b
-        
+        result = (a ** b) / (1 + 2)
+
     return result
