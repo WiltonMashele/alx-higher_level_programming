@@ -1,9 +1,13 @@
 #!/usr/bin/python3
 def safe_print_division(a, b):
+    """Returns the division of a by b."""
     try:
-        num_div = a // b
+        div = a / b
     except (TypeError, ZeroDivisionError):
-        num_div = None
+        div = None
+    else:
+        print("Inside result: {}".format(div))
     finally:
-        print("Inside result: {}".format("{:d}".format(num_div) if num_div is not None else None))
-    return num_div
+        if 'div' not in locals():
+            print("Inside result: {}".format(div))
+    return div
