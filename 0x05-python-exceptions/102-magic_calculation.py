@@ -1,10 +1,15 @@
 #!/usr/bin/python3
 
 def magic_calculation(a, b):
-    try:
-        if a < 1 or b < 1:
-            raise ValueError("Invalid input")
-        result = a ** b / 1 + a ** b / 2
-    except ValueError:
-        result = b + a
+    result = 0
+    i = 1
+
+    while i < 3:
+        if i > a:
+            result = b + a
+            break
+        else:
+            result += a ** b / i
+        i += 1
+
     return result
