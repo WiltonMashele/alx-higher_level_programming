@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
 import sys
+import traceback
 
 def safe_function(fct, *args):
     """
@@ -9,6 +10,6 @@ def safe_function(fct, *args):
     try:
         result = fct(*args)
         return result
-    except Exception as e:
-        print("Exception: {}".format(e), file=sys.stderr)
+    except Exception:
+        traceback.print_exc(file=sys.stderr)
         return None
