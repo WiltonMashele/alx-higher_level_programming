@@ -4,7 +4,17 @@
 
 
 class Square:
-"""a class Square that defines a square"""
     def __init__(self, size):
-        """ Initialize square """
         self.__size = size
+
+    def get_size(self):
+        return self.__size
+
+    def set_size(self, size):
+        self.__size = size
+
+    def area(self):
+        return self.__size ** 2
+
+    def perimeter(self):
+        return 4 * self.__size
