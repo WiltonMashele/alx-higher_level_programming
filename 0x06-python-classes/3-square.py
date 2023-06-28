@@ -1,17 +1,14 @@
 #!/usr/bin/python3
 
+def __init__(self, size=0):
+    if type(size) is not int:
+        raise TypeError("size must be an integer")
+    elif size < 0:
+        raise ValueError("size must be >= 0")
+    self.__size = size
 
-class Square:
-    def __init__(self, size=0):
-        self.__validate_size(size)
-        self.__size = size
-
-    def __validate_size(self, size):
-        if type(size) is not int:
-            raise TypeError("size must be an integer")
-        if size < 0:
-            raise ValueError("size must be >= 0")
-
-    def area(self):
-        return self.__size * self.__size
-
+def area(self):
+    """
+    Returns the current square area.
+    """
+    return self.__size ** 2
