@@ -3,5 +3,5 @@
 """Empty class Square that defines a square"""
 
 class Square:
-    def __init__(self):
-        pass
+    def __str__(self):
+        return "Square object"
