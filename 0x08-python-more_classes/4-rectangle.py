@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-This module defines the Rectangle class, which represents a rectangle.
+defines the Rectangle class, which represents a rectangle.
 """
 
 
@@ -8,7 +8,6 @@ class Rectangle:
     """
     This class represents a rectangle.
     """
-
     def __init__(self, width=0, height=0):
         """
         Initializes a rectangle object with optional width and height.
