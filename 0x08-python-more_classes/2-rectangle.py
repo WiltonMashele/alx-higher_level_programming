@@ -5,6 +5,7 @@ This class defines a rectangle.
 It represents an empty rectangle initially, with no width or height specified.
 """
 
+
 class Rectangle:
     """
     This class defines a rectangle.
