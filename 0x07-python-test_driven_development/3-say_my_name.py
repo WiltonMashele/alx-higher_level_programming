@@ -11,8 +11,8 @@ def say_my_name(first_name, last_name=""):
     Raises:
         TypeError: If either first_name or last_name are not strings.
     """
-    if type(first_name) != str:
-        raise TypeError("The first name must be a string")
-    if type(last_name) != str:
-        raise TypeError("The last name must be a string")
-    print("Name: {} {}".format(first_name, last_name))
+    try:
+        full_name = " ".join(filter(None, [first_name, last_name]))
+        print("My name is", full_name)
+    except TypeError as e:
+        raise TypeError("Both first_name and last_name must be strings") from e
