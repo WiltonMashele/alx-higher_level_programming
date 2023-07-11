@@ -12,9 +12,6 @@ def append_write(filename="", text=""):
         int: The number of characters appended.
     """
 
-    try:
-        with open(filename, 'a') as file:
-            return file.write(text)
-    except Exception as e:
-        print(f"An error occurred: {str(e)}")
-        return -1
+    with open(filename, 'w', encoding="utf-8") as f:
+        f.write(text)
+    return
