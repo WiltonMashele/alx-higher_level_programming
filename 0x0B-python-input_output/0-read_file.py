@@ -8,6 +8,7 @@ def read_file(filename=""):
     Reads a text file (UTF-8) and
     prints its contents to the standard output. Does not return any value.
     """
+
     try:
         with open(filename, "r", encoding="utf-8") as f:
             contents = f.read()
