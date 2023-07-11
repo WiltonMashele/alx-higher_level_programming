@@ -1,6 +1,5 @@
 #!/usr/bin/python3
-"""
-This program reads a text file and prints its contents to stdout.
+"""This program reads a text file and prints its contents to stdout.
 """
 
 
