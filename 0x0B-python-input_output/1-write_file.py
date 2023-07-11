@@ -4,12 +4,12 @@
 
 def append_write(filename="", text=""):
     """
-    Appends a string to the end of a UTF8 text file.
+    Writes a string to a UTF-8 text file, overwriting the previous contents.
     Args:
-        filename (str): The name of the file to append to.
-        text (str): The string to append to the file.
+        filename (str): The name of the file to write to.
+        text (str): The string to write to the file.
     Returns:
-        int: The number of characters appended.
+        int: The number of characters written.
     """
     with open(filename, 'w', encoding="utf-8") as f:
         num_of_chars = f.write(text)
