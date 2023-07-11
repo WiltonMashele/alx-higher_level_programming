@@ -1,22 +1,17 @@
 #!/usr/bin/python3
-"""Module containing a function to convert an object to its JSON representation"""
+"""Defines a function to convert a Python object to a JSON string."""
 import json
 
 
-def to_json_string(obj):
-    """Converts an object to its JSON representation.
+def to_json_string(my_obj):
+    """
+    Return the JSON representation of a Python object.
 
     Args:
-        obj: The object to be converted.
+        my_obj (object): The Python object to be converted to JSON.
 
     Returns:
-        str: The JSON representation of the object.
-
-    Raises:
-        TypeError: If the object is not JSON serializable.
-
+        str: The JSON string representing the Python object.
     """
-    try:
-        return json.dumps(obj)
-    except TypeError as e:
-        raise TypeError("Object is not JSON serializable: {}".format(e))
+    return json.dumps(my_obj)
+
