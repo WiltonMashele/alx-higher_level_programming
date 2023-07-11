@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/python3
 """
 This script takes command line arguments and adds them to a Python list.
 The list is then saved to a JSON file.
