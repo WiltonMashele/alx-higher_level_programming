@@ -9,8 +9,7 @@ def write_file(filename="", text=""):
         filename (str): The name of the file to write. Default is an empty string.
         text (str): The text to write to the file. Default is an empty string.
     Returns:
-        int: The number of characters written.
+        The number of characters written.
     """
     with open(filename, "w", encoding="utf-8") as file:
         return file.write(text)
-
