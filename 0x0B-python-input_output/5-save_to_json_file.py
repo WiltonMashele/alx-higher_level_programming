@@ -1,24 +1,15 @@
 #!/usr/bin/python3
-"""
-Module that contains a function to deserialize a JSON representation into an object
-"""
+"""Defines a function to save an object to a JSON file."""
 import json
 
 
-def from_json_string(json_string):
+def save_to_json_file(my_obj, filename):
     """
-    Deserialize a JSON representation into an object
+    Save an object to a JSON file.
+
     Args:
-        json_string (str): JSON representation
-
-    Raises:
-        ValueError: If the JSON string is invalid or cannot be decoded
-
-    Returns:
-        object: Deserialized object
-
+        my_obj (any): The object to be serialized and saved.
+        filename (str): The name of the file to save the object to.
     """
-    try:
-        return json.loads(json_string)
-    except json.JSONDecodeError as e:
-        raise ValueError("Invalid JSON string: {}".format(str(e)))
+    with open(filename, "w") as file:
+        json.dump(my_obj, file)
