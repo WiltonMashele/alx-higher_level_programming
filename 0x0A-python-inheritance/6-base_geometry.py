@@ -13,3 +13,4 @@ class BaseGeometry:
             NotImplementedError: If the method is not overridden in a derived class.
         """
         raise NotImplementedError("area() method is not implemented")
+
