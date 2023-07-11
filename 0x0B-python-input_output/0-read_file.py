@@ -6,8 +6,7 @@ This program reads a text file and prints its contents to stdout.
 
 def read_file(filename=""):
     """Reads a text file (assuming UTF-8 encoding) and
-    prints its contents to the standard output.
-    Does not return any value.
+    prints its contents to the standard output. Does not return any value.
     """
     try:
         with open(filename, "r", encoding="utf-8") as f:
