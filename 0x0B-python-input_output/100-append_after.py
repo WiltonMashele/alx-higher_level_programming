@@ -1,23 +1,20 @@
 #!/usr/bin/python3
-""" Module for appending a line when a specific string is found """
+"""Defines a function for inserting text into a text file."""
 
 
-def append_line(filename="", search_string="", new_string=""):
-    """ Function to append a new line if a string is found
+def append_after(filename="", search_string="", new_string=""):
+    """Inserts text after each line containing a specified string in a file.
 
     Args:
-        filename (str): Name of the file
-        search_string (str): String to search for
-        new_string (str): String to append
-
+        filename (str): The name of the file.
+        search_string (str): The string to search for within each line of the file.
+        new_string (str): The string to insert after each line.
     """
-
-    lines = []
-    with open(filename, 'r', encoding="utf-8") as file:
+    text = ""
+    with open(filename, "r") as file:
         for line in file:
-            lines.append(line.rstrip('\n'))
+            text += line
             if search_string in line:
-                lines.append(new_string)
-
-    with open(filename, 'w', encoding="utf-8") as file:
-        file.write('\n'.join(lines))
+                text += new_string
+    with open(filename, "w") as file:
+        file.write(text)
