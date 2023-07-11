@@ -4,7 +4,8 @@
 
 
 def read_file(filename=""):
-    """Reads a text file (assuming UTF-8 encoding) and
+    """
+    Reads a text file (UTF-8 encoding) and
     prints its contents to the standard output. Does not return any value.
     """
     try:
