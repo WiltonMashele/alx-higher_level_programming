@@ -1,12 +1,14 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """
-This module defines the BaseGeometry class.
+This module defines the BaseGeometry class, which serves as a base for other geometry classes.
 """
 
 
 class BaseGeometry:
     """
-    This is an empty class that serves as a base for other geometric classes.
-    It does not contain any methods or attributes.
+    Represents the base geometry class.
+
+    This class provides a foundation for other geometry classes.
+    It is currently empty and does not have any methods or attributes.
     """
     pass
