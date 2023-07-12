@@ -12,7 +12,6 @@ def add_attribute(obj, att, value):
     Raises:
         TypeError: If the attribute cannot be added to `obj`.
     """
-    if isinstance(obj, dict):
-        obj[att] = value
-    else:
-        raise TypeError("Unable to add new attribute.")
+    if not isinstance(obj, object):
+        raise TypeError("Unable to add new attribute")
+    setattr(obj, att, value)
