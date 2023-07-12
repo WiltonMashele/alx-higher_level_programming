@@ -5,8 +5,5 @@ This module defines the BaseGeometry class, which serves as a base for other geo
 
 
 class BaseGeometry:
-    """
-    Represents the base geometry class.
-    This class provides a foundation for other geometry classes.
-    """
+    """Represents the base geometry class."""
     pass
