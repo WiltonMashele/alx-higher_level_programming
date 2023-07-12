@@ -1,44 +1,56 @@
 #!/usr/bin/python3
 """
-Reads input from the user and calculates metrics.
+This script reads from standard input and computes metrics.
 
-After every five inputs or if the user interrupts the program (CTRL + C),
-it displays the following statistics:
-    - Total sum of the inputs up to that point.
-    - Count of unique inputs up to that point.
+After every ten lines or upon receiving a keyboard interruption (CTRL + C),
+it prints the following statistics:
+- Total file size up to that point.
+- Count of read status codes up to that point.
 """
 
 
-def print_statistics(total_sum, count):
+def print_stats(size: int, status_codes: dict):
     """
-    Prints accumulated metrics.
+    Print accumulated metrics.
 
     Args:
-        total_sum (int): The accumulated sum of inputs.
-        count (int): The accumulated count of unique inputs.
+        size (int): The accumulated file size.
+        status_codes (dict): The accumulated count of status codes.
     """
-    print("Total sum: {}".format(total_sum))
-    print("Count of inputs: {}".format(count))
+    print("Accumulated file size:", size)
+    for code, count in sorted(status_codes.items()):
+        print(f"{code}: {count}")
 
 
 if __name__ == "__main__":
-    total_sum = 0
+    import sys
+
+    size = 0
+    status_codes = {}
+    valid_codes = {'200', '301', '400', '401', '403', '404', '405', '500'}
     count = 0
-    unique_inputs = set()
 
     try:
-        while True:
-            user_input = input("Enter a number: ")
+        for line in sys.stdin:
+            if count == 10:
+                print_stats(size, status_codes)
+                count = 1
+            else:
+                count += 1
 
-            total_sum += int(user_input)
-            unique_inputs.add(user_input)
-            count += 1
+            line_parts = line.split()
 
-            if count == 5:
-                print_statistics(total_sum, len(unique_inputs))
-                count = 0
+            try:
+                code = line_parts[-2]
+                if code in valid_codes:
+                    size += int(line_parts[-1])
+                    status_codes[code] = status_codes.get(code, 0) + 1
+            except (IndexError, ValueError):
+                pass
+
+        print_stats(size, status_codes)
 
     except KeyboardInterrupt:
-        print_statistics(total_sum, len(unique_inputs))
+        print_stats(size, status_codes)
         raise
 
