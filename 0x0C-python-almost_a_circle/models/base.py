@@ -1,10 +1,10 @@
 #!/usr/bin/python3
 """Base Module"""
 
+
 class Base:
     """This module defines a base class."""
     __nb_objects = 0
-
 
     def __init__(self, id=None):
         """Constructor method that assigns the public instance attribute 'id'.
