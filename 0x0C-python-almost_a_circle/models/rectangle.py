@@ -63,7 +63,7 @@ class Rectangle(Base):
         return (self.__height * self.__width)
 
     def display(self):
-        """Print the Rectangle using the `#`."""
+        """Print the Rectangle using the #."""
         if self.width == 0 or self.height == 0:
             print("")
             return
@@ -71,5 +71,5 @@ class Rectangle(Base):
         for y in range(self.y):
             print()
 
-        for x in range(self.height):
-            print(" " * self.x + "#" * self.width)
+        for x in range(self.__height):
+            print(" " * self.x + "#" * self.__width)
