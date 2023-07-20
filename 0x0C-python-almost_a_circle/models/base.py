@@ -2,12 +2,13 @@
 """Base Module"""
 
 import json
+from typing import List, Dict
 
 class Base:
     """This module defines a base class."""
     __nb_objects = 0
 
-    def __init__(self, id=None):
+    def __init__(self, id: int = None) -> None:
         """Constructor method that assigns the public instance attribute 'id'.
 
         Args:
@@ -15,9 +16,7 @@ class Base:
 
         Returns:
             None.
-
         """
-
         if id is not None:
             self.id = id
         else:
@@ -25,8 +24,9 @@ class Base:
             self.id = Base.__nb_objects
 
 class DataSerializer:
+    """A utility class for data serialization."""
     @staticmethod
-    def to_json_string(list_dictionaries):
+    def to_json_string(list_dictionaries: List[Dict]) -> str:
         """Return the JSON serialization of a list of dictionaries.
 
         This method takes a list of dictionaries and returns its JSON representation.
@@ -40,3 +40,4 @@ class DataSerializer:
         if list_dictionaries is None or list_dictionaries == []:
             return "[]"
         return json.dumps(list_dictionaries)
+
