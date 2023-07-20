@@ -87,3 +87,42 @@ class Rectangle(Base):
         for x in range(self.__height):
             print(" " * self.__x + "#" * self.__width)
 
+    def __str__(self):
+        """Returns a formatted string representation of the Rectangle"""
+        return f"[Rectangle] ({self.id}) {self.x}/{self.y} - {self.width}/{self.height}"
+
+    def update(self, *args, **kwargs):
+        """
+        Updates the attributes of the Rectangle.
+        Arguments can be passed either as positional arguments (args) or 
+        keyword arguments (kwargs).
+        """
+        if args and len(args) != 0:
+            for i, arg in enumerate(args):
+                if i == 0 and arg is not None:
+                    self.id = arg
+                elif i == 1:
+                    self.width = arg
+                elif i == 2:
+                    self.height = arg
+                elif i == 3:
+                    self.x = arg
+                elif i == 4:
+                    self.y = arg
+
+        elif kwargs and len(kwargs) != 0:
+            for k, v in kwargs.items():
+                if k == "id" and v is not None:
+                    self.id = v
+                elif k == "width":
+                    self.width = v
+                elif k == "height":
+                    self.height = v
+                elif k == "x":
+                    self.x = v
+                elif k == "y":
+                    self.y = v
+
+    def to_dictionary(self):
+        """Returns the dictionary representation of the Rectangle"""
+        return {'id': self.id, 'width': self.width, 'height': self.height, 'x': self.x, 'y': self.y}
