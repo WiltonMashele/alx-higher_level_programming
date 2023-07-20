@@ -23,7 +23,7 @@ class Rectangle(Base):
     @width.setter
     def width(self, value):
         """Set the width value of the rectangle."""
-        if not isinstance(value, int):
+        if type(value) is not int:
             raise TypeError("Width must be an integer")
         if value <= 0:
             raise ValueError("Width must be greater than 0")
@@ -37,7 +37,7 @@ class Rectangle(Base):
     @height.setter
     def height(self, value):
         """Set the height value of the rectangle."""
-        if not isinstance(value, int):
+        if type(value) is not int:
             raise TypeError("Height must be an integer")
         if value <= 0:
             raise ValueError("Height must be greater than 0")
@@ -51,7 +51,7 @@ class Rectangle(Base):
     @x.setter
     def x(self, value):
         """Set the x value of the rectangle."""
-        if not isinstance(value, int):
+        if type(value) is not int:
             raise TypeError("X value must be an integer")
         if value < 0:
             raise ValueError("X value must be non-negative")
@@ -65,7 +65,7 @@ class Rectangle(Base):
     @y.setter
     def y(self, value):
         """Set the y value of the rectangle."""
-        if not isinstance(value, int):
+        if type(value) is not int:
             raise TypeError("Y value must be an integer")
         if value < 0:
             raise ValueError("Y value must be non-negative")
@@ -126,3 +126,4 @@ class Rectangle(Base):
     def to_dictionary(self):
         """Returns the dictionary representation of the Rectangle"""
         return {'id': self.id, 'width': self.width, 'height': self.height, 'x': self.x, 'y': self.y}
+
