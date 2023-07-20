@@ -1,7 +1,7 @@
 #!/usr/bin/python3
-"""Defines a Rectangle class that from Base"""
+"""Defines a Rectangle class that inherits from Base"""
 
-from  models.base import Base
+from models.base import Base
 
 
 class Rectangle(Base):
@@ -9,12 +9,25 @@ class Rectangle(Base):
 
     def __init__(self, width, height, x=0, y=0, id=None):
         """Create a new Rectangle object."""
-
+        super().__init__(id)
         self.width = width
         self.height = height
         self.x = x
         self.y = y
-        super().__init__(id)
+
+    @property
+    def width(self):
+        """Get the width value of the rectangle."""
+        return self.__width
+
+    @width.setter
+    def width(self, value):
+        """Set the width value of the rectangle."""
+        if not isinstance(value, int):
+            raise TypeError("Width must be an integer")
+        if value <= 0:
+            raise ValueError("Width must be greater than 0")
+        self.__width = value
 
     @property
     def height(self):
@@ -68,8 +81,9 @@ class Rectangle(Base):
             print("")
             return
 
-        for y in range(self.y):
+        for y in range(self.__y):
             print()
 
         for x in range(self.__height):
-            print(" " * self.x + "#" * self.__width)
+            print(" " * self.__x + "#" * self.__width)
+
