@@ -1,8 +1,11 @@
 #!/usr/bin/python3
 """Base Module"""
 
+import csv
 import json
 from typing import List, Dict
+import turtle
+
 
 class Base:
     """This module defines a base class."""
@@ -74,3 +77,72 @@ class Base:
         except (ValueError, SyntaxError):
             return []
 
+    @classmethod
+    def create(cls, **attributes):
+        """Return a class instantiated from a dictionary of attributes.
+
+        Args:
+            **attributes (dict): Key/value pairs of attributes to initialize the class.
+        """
+        instance = cls(1, 1) if cls.__name__ == "Rectangle" else cls(1)
+        instance.update(**attributes)
+        return instance
+
+    @classmethod
+    def load_from_file(cls):
+        """
+        Return a list of class instances created from a JSON file.
+
+        Reads from a JSON file named '<ClassName>.json', where 'ClassName'
+        is the name of the class in snake_case format.
+
+        Returns:
+            If the file does not exist - an empty list.
+            Otherwise - a list of instantiated classes from the JSON data.
+        """
+        filename = f"{cls.__name__}.json"
+        try:
+            with open(filename, "r") as jsonfile:
+                list_dicts = json.load(jsonfile)
+                return [cls.create(**d) for d in list_dicts]
+        except FileNotFoundError:
+            return []
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """Serialize a list of objects to a CSV file.
+
+        Args:
+            list_objs (list): A list of objects that inherit from the Base class.
+            filename (str): The name of the file to write the CSV data to.
+        """
+        filename = f"{cls.__name__}.csv"
+        with open(filename, "w", newline="") as csvfile:
+            if not list_objs:
+                csvfile.write("[]")
+            else:
+                fieldnames = ["id", "width", "height", "x", "y"] if cls.__name__ == "Rectangle" else ["id", "size", "x", "y"]
+                writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+                writer.writeheader()
+                for obj in list_objs:
+                    writer.writerow(obj.to_dictionary())
+    @classmethod
+    def load_from_file_csv(cls):
+        """Return a list of class objects instantiated from a CSV file.
+
+        The function reads from '<cls.__name__>.csv' where 'cls' is the class name.
+
+        Returns:
+            If the file does not exist - an empty list.
+            Otherwise - a list of class objects instantiated from the CSV file.
+        """
+        filename = f"{cls.__name__}.csv"
+        try:
+            with open(filename, "r", newline="") as csvfile:
+                fieldnames = ["id", "width", "height", "x", "y"] if cls.__name__ == "Rectangle" else ["id", "size", "x", "y"]
+                reader = csv.DictReader(csvfile, fieldnames=fieldnames)
+                next(reader)  # Skip the header row
+                list_dicts = [dict([(k, int(v)) for k, v in d.items()]) for d in reader]
+                return [cls.create(**d) for d in list_dicts]
+        except FileNotFoundError:
+            return []
