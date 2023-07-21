@@ -53,3 +53,24 @@ class Base:
             else:
                 list_dicts = [o.to_dictionary() for o in list_objs]
                 json.dump(list_dicts, jsonfile)
+
+    @staticmethod
+    def from_json_string(json_string):
+        """
+        Convert a JSON string into a Python list.
+
+        Args:
+            json_string (str): The JSON string to be converted, representing a list of dictionaries.
+
+        Returns:
+            list: The Python list represented by the input JSON string. If the input string is None or empty,
+                  an empty list is returned.
+        """
+        if json_string is None or json_string == "[]":
+            return []
+        
+        try:
+            return ast.literal_eval(json_string)
+        except (ValueError, SyntaxError):
+            return []
+
