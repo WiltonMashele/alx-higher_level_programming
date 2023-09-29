@@ -7,20 +7,17 @@
 import sys
 import requests
 
-if __name__ == "__main__":
-    if len(sys.argv) < 2:
-        print("Usage: {} <url>".format(sys.argv[0]))
-        sys.exit(1)
-
-    url = sys.argv[1]
-
+def fetch_url(url):
     try:
         response = requests.get(url)
-    except requests.exceptions.RequestException as e:
-        print(f"Failed to send request to {url}: {e}")
-        sys.exit(1)
-    
-    if response.status_code >= 400:
-        print(f"Error code: {response.status_code}")
-    else:
-        print(response.text)
+        if response.status_code >= 400:
+            print(f"Error code: {response.status_code}")
+        else:
+            print(response.text)
+    except requests.RequestException as error:
+        print(f"Failed to fetch URL: {error}")
+
+if __name__ == "__main__":
+    if len(sys.argv) > 1:
+        url_to_fetch = sys.argv[1]
+        fetch_url(url_to_fetch)
