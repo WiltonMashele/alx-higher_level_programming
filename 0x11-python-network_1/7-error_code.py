@@ -8,9 +8,17 @@ import sys
 import requests
 
 if __name__ == "__main__":
+    if len(sys.argv) < 2:
+        print("Usage: {} <url>".format(sys.argv[0]))
+        sys.exit(1)
+
     url = sys.argv[1]
 
-    response = requests.get(url)
+    try:
+        response = requests.get(url)
+    except requests.exceptions.RequestException as e:
+        print(f"Failed to send request to {url}: {e}")
+        sys.exit(1)
     
     if response.status_code >= 400:
         print(f"Error code: {response.status_code}")
