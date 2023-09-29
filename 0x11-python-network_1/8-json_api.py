@@ -10,7 +10,6 @@ def search_user(letter):
     """Sends a POST request and prints the response."""
     url = "http://0.0.0.0:5000/search_user"
     payload = {"q": letter}
-
     response = requests.post(url, data=payload)
 
     try:
