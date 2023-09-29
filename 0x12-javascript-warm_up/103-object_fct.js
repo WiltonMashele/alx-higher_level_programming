@@ -1,15 +1,12 @@
 #!/usr/bin/node
-function createMyObject() {
-  return {
-    type: 'object',
-    value: 12,
-    incr: function () {
-      this.value++;
-    }
-  };
-}
-const myObject = createMyObject();
+const myObject = {
+  type: 'object',
+  value: 12
+};
 console.log(myObject);
+myObject.incr = function () {
+  this.value++;
+};
 myObject.incr();
 console.log(myObject);
 myObject.incr();
