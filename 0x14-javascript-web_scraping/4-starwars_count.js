@@ -1,12 +1,13 @@
 #!/usr/bin/node
 const request = require('request');
-request(process.argv[2], (error, response, body) => {
-  if (!error) {
-    const results = JSON.parse(body).results;
-    const count = results.reduce((count, movie) => (
-      movie.characters.some((character) => character.endsWith('/18/')) ? count + 1 : count
-    ), 0);
-    console.log(count);
-  }
-});
+let nFilms = 0;
 
+request(process.argv[2], (err, response, body) => {
+  if (!err && response.statusCode === 200) {
+    const results = JSON.parse(body).results;
+    for (let i = 0; i < results.length; i++) {
+      nFilms += results[i].characters.some(character => character.includes('18'));
+    }
+  }
+  console.log(nFilms);
+});
