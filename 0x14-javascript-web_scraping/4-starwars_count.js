@@ -1,20 +1,12 @@
 #!/usr/bin/node
+const request = require('request');
+request(process.argv[2], (error, response, body) => {
+  if (!error) {
+    const results = JSON.parse(body).results;
+    const count = results.reduce((count, movie) => (
+      movie.characters.some((character) => character.endsWith('/18/')) ? count + 1 : count
+    ), 0);
+    console.log(count);
+  }
+});
 
-const axios = require('axios');
-const apiUrl = process.argv[2];
-const characterId = process.argv[3];
-
-if (!apiUrl || !characterId) {
-  console.error('Usage: node script.js <API_URL> <character_id>');
-} else {
-  axios.get(apiUrl)
-    .then((response) => {
-      const nFilms = response.data.results.reduce((count, result) => {
-        return count + result.characters.filter((character) => character.includes(characterId)).length;
-      }, 0);
-      console.log(nFilms);
-    })
-    .catch((error) => {
-      console.error('An error occurred:', error);
-    });
-}
